@@ -1,0 +1,40 @@
+﻿@model StudyMaterial
+@{ Layout = null; }
+
+
+
+
+<div class="container">
+    @if (Model != null)
+    {
+        <hr />
+        <table class="table table-bordered table-striped" cellpadding="0" cellspacing="0" border="1">
+            <thead>
+                <tr>
+                    <th>SL</th>
+                    <th>PDF Name</th>
+                    <th>Display Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (StudyMaterial file in Model.Files)
+                {
+                    <tr>
+                        <td>@file.FileId</td>
+                        <td>@file.Name</td>
+                        <td>
+                            <a href="../Teacher/File?filename=@file.Name" style="margin-right:10px;">Current Page</a>
+                            <a href="../Teacher/PDFViewerNewTab?filename=@file.Name" target="_blank">New Tab</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+
+
+    <br />
+    <br />
+    <embed id="embPDF" src="~ /files/@Model.Name">
+</div>

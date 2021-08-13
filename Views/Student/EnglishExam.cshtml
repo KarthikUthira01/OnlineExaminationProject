@@ -1,0 +1,94 @@
+﻿@model IEnumerable<OnlineExaminationSchool.Models.EnglishQnA>
+
+@{
+    ViewData["Title"] = "Exam";
+}
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+
+<h1>UNIT TEST 1</h1>
+<h1>English Exam</h1>
+<form>
+
+    <table class="table">
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id) )  @Html.DisplayFor(modelItem => item.QuestionName) ?
+                    </td>
+
+
+                    <td>
+                        <input type="radio" name="@Html.DisplayFor(modelItem => item.Id)" value=" @Html.DisplayFor(modelItem => item.Option1)" class="rb" id="option1" />
+                        @Html.DisplayFor(modelItem => item.Option1)
+
+
+                        <input type="radio" name="@Html.DisplayFor(modelItem => item.Id)" value=" @Html.DisplayFor(modelItem => item.Option2)" class="rb" id="option2" />
+
+                        @Html.DisplayFor(modelItem => item.Option2)
+
+
+                        <input type="radio" name="@Html.DisplayFor(modelItem => item.Id)" value=" @Html.DisplayFor(modelItem => item.Option3)" class="rb" id="option3" />
+
+                        @Html.DisplayFor(modelItem => item.Option3)
+
+
+                        <input type="radio" name="@Html.DisplayFor(modelItem => item.Id)" value=" @Html.DisplayFor(modelItem => item.Option4)" class="rb" id="option4" />
+
+                        @Html.DisplayFor(modelItem => item.Option4)
+                    </td>
+
+
+
+                </tr>
+                <tr>
+                    <td>
+                        <label id="correctans" name="@Html.DisplayFor(modelItem => item.Id)" style="display:none;color:forestgreen" class="rb">@Html.DisplayFor(modelItem => item.AnswerText)</label>
+                    </td>
+                </tr>
+
+
+            }
+        </tbody>
+    </table>
+
+
+
+</form>
+<button type="button" id="butexam" onclick="Displayresult();" class="btn btn-success">Submit</button>
+<br />
+<br />
+<label id="result"></label>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#butexam").click(function () {
+            $(".rb").show();
+            $(".rb").attr("disabled", true);
+        });
+    });
+
+    var marks = 0;
+    function validateAns(correctans) {
+
+        //alert(correctans);
+        var selectedAnswer = $("input[type='radio']:checked").val();
+        if (selectedAnswer === correctans) {
+            console.log(selectedAnswer);
+            marks += 1;
+        }
+    }
+    function Displayresult() {
+        document.getElementById("result").innerHTML = marks;
+
+    }
+</script>
+
+
+

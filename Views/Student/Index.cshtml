@@ -1,0 +1,34 @@
+﻿<style>
+    .card{
+        margin-top:12%;
+        margin-left:13%;
+        
+    }
+    body{
+        background-color:burlywood;
+    }
+</style>
+<body>
+    
+        <div class="card">
+            <div class="card-header">
+                <h2 style="font-family:sans-serif">
+                    <span style="text-align:center">
+
+                        Welcome -<span class="btn-outline-info"> @User.Identity.Name</span>
+
+                    </span>
+                </h2>
+            </div>
+            <div class="card-body">
+                <a asp-action="TestName" asp-controller="Student" class="btn btn-link">Take Test</a>
+                <a asp-action="StudentMaterial" asp-controller="Teacher" class="btn btn-link">Study Material</a>
+
+            </div>
+            <div class="card-footer">
+                <p class="alert-light" style="text-align:center">STUDENT PORTAL</p>
+            </div>
+
+        </div>
+    
+</body>

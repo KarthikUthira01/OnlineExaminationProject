@@ -1,0 +1,27 @@
+﻿<style>
+    .card{
+        margin-top:11%;
+    }
+    p{
+        font-family:sans-serif;
+        font-weight:100;
+        color:black;
+    }
+</style>
+<center><p>Welcome To Exam Portal</p></center>
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <span style="text-align:center;font-family:sans-serif">Choose the type of subject</span>
+            </div>
+            <div class="card-body">
+                <a asp-action="MathsExam" asp-controller="Student" class="btn btn-danger disabled" disa>Maths</a>
+                <a asp-action="EnglishExam" asp-controller="Student" class="btn btn-primary">English</a>
+                <a asp-action="SocialExam" asp-controller="Student" class="btn btn-danger disabled">Social</a>
+                <a asp-action="ScienceExam" asp-controller="Student" class="btn btn-primary">Science</a>
+            </div>
+            <div class="card-footer">
+                <span style="text-align:center;font-family:sans-serif">ASPIRE SCHOOL</span>
+            </div>
+        </div>
+    </div>

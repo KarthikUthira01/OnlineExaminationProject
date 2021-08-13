@@ -1,0 +1,8 @@
+﻿body {
+    background-color:grey;
+}
+.card-body {
+    color: black;
+    font-family: 'Agency FB';
+    align-items:center;
+}

@@ -1,0 +1,50 @@
+﻿@model OnlineExaminationSchool.ViewModels.EditRoleViewModel
+
+    <link href="~/css/EditRole.css" rel="stylesheet" />
+    <body>
+        <h3 style="font-family:sans-serif;color:white">EditRole Page</h3>
+
+        <form method="post">
+            <div asp-validation-summary="All" class="text-danger">
+
+                <div class="form-group">
+                    <label asp-for="Id"></label>
+                    <input asp-for="Id" disabled class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Name"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success">Update</button>
+                    <a asp-action="ListRole" asp-controller="Admin" class="btn btn-danger" style="width:auto">Cancel</a>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Users In this Role</h3>
+                    </div>
+                    <div id="cardbody" class="card-body">
+                        @if (Model.Users.Any())
+                        {
+                            foreach (var user in Model.Users)
+                            {
+                                <h3 class="card-title">@user</h3>
+                            }
+                        }
+                        else
+                        {
+                            <h3 class="card-title">None at the moment</h3>
+                        }
+                    </div>
+                    <div class="card-footer">
+                        <a id="AddRemove" asp-action="EditUsersInRole" asp-controller="Admin" asp-route-roleId="@Model.Id" class="btn btn-primary" style="width:auto">Add or Remove Users</a>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </body>

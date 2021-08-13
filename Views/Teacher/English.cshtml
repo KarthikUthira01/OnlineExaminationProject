@@ -1,0 +1,48 @@
+﻿@model OnlineExaminationSchool.ViewModels.QuestionOptionViewModel
+<center>
+    Welcome To Teacher Page - @User.Identity.Name
+</center>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+<form enctype="multipart/form-data" asp-action="English" asp-controller="Teacher">
+
+    <div class="form-group">
+        <label asp-for="SubjectName"></label>
+        <input type="text" asp-for="SubjectName" class="form-control" id="txtQuestionName" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="QuestionName"></label>
+        <input type="text" asp-for="QuestionName" class="form-control" id="txtQuestionName" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Option1"></label>
+        <input type="text" asp-for="Option1" class="form-control" id="txtOptionName" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Option2"></label>
+        <input type="text" asp-for="Option2" class="form-control" id="txtOptionName" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Option3"></label>
+        <input type="text" asp-for="Option3" class="form-control" id="txtOptionName" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Option4"></label>
+        <input type="text" asp-for="Option4" class="form-control" id="txtOptionName" />
+    </div>
+    <div class="form-group">
+        <label asp-for="AnswerText"></label>
+        <input type="text" asp-for="AnswerText" class="form-control" id="txtOptionName" />
+    </div>
+
+    <br>
+
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-success" id="btnSave" />
+    </div>
+
+</form>
+
