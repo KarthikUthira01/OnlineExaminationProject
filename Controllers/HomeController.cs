@@ -17,7 +17,7 @@ namespace OnlineExaminationSchool.Controllers
         {
             _logger = logger;
         }
-
+        //First Page After Authentication With Navigation Bars
         public IActionResult Index()
         {
             return View();

@@ -18,7 +18,7 @@ namespace SchoolTestProject.Controllers
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
         
-
+        //injecting usermanager and signinmanager classes 
         public AccountController(UserManager<IdentityUser> userManager,SignInManager<IdentityUser> signInManager)
         {
             
@@ -27,12 +27,14 @@ namespace SchoolTestProject.Controllers
         } 
         
         [HttpGet]
+        //Get Register Page
         public IActionResult Register()
         {
             return View();
         }
         
         [HttpPost]
+        //Post Register Details(New User) 
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
@@ -58,6 +60,7 @@ namespace SchoolTestProject.Controllers
         }
         
         [HttpGet]
+        //Authentication
         public IActionResult Login()
         {
 
@@ -65,6 +68,7 @@ namespace SchoolTestProject.Controllers
         }
         
         [HttpPost]
+        //Authentication - Validating the details 
         public async Task<IActionResult> Login(LoginViewModel model)
         {
             if (ModelState.IsValid)
@@ -88,17 +92,20 @@ namespace SchoolTestProject.Controllers
         }
         
         [HttpPost]
+        //Logging Out
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
             return RedirectToAction("Login", "Account");
         }
         [HttpGet]
+        //ForgotPassword Page
         public IActionResult ForgotPassword()
         {
             return View();
         }
         [HttpPost]
+        
         public async Task<IActionResult> ForgotPassword(ForgotPasswordViewModel model)
         {
             if (ModelState.IsValid)

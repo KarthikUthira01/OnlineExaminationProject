@@ -9,10 +9,12 @@ using System.Threading.Tasks;
 
 namespace OnlineExaminationSchool.Controllers
 {
-    //Admin manages the roles and activities of users
+    //Only Admin Can Access this Controller
     [Authorize(Roles ="Admin")]
     public class AdminController : Controller
     {
+        //Injecting Signinmanager and Usermanager classes
+
         private readonly UserManager<IdentityUser> _userManager;
 
         private readonly RoleManager<IdentityRole> _roleManager;
@@ -23,11 +25,13 @@ namespace OnlineExaminationSchool.Controllers
         }
 
         [HttpGet]
+        //Get Create Role Page
         public IActionResult CreateRole()
         {
             return View();
         }
         [HttpPost]
+        //Submitting The Role 
         public async Task<IActionResult> CreateRole(CreateRoleViewModel model)
         {
             if (ModelState.IsValid)
@@ -52,6 +56,7 @@ namespace OnlineExaminationSchool.Controllers
         }
 
         [HttpGet]
+        //Getting ListOfRoles
         public IActionResult ListRole()
         {
             var roles = _roleManager.Roles;
@@ -59,6 +64,7 @@ namespace OnlineExaminationSchool.Controllers
         }
 
         [HttpGet]
+        //Getting EditRole Page
         public async Task<IActionResult> EditRole(string id)
         {
             var role = await _roleManager.FindByIdAsync(id);
@@ -84,6 +90,7 @@ namespace OnlineExaminationSchool.Controllers
         }
 
         [HttpPost]
+        //Submitting EditRole Page
         public async Task<IActionResult> EditRole(EditRoleViewModel model)
         {
             var role = await _roleManager.FindByIdAsync(model.Id);
@@ -111,6 +118,7 @@ namespace OnlineExaminationSchool.Controllers
         }
 
         [HttpGet]
+        //Getting Edit Page For User Role Management
         public async Task<IActionResult> EditUsersInRole(string roleId)
         {
             ViewBag.roleId = roleId;
@@ -144,6 +152,7 @@ namespace OnlineExaminationSchool.Controllers
             return View(model);
         }
         [HttpPost]
+        //Posting User Role Changes
        public async Task<IActionResult> EditUsersInRole(List<UserRoleViewModel> model,string roleId)
         {
             var role = await _roleManager.FindByIdAsync(roleId);

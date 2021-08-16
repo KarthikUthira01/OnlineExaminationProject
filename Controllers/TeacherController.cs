@@ -15,10 +15,12 @@ using System.Threading.Tasks;
 
 namespace SchoolTestProject.Controllers
 {
+    //Only Teacher Can Access This Controller
     //Guest comes in the absence of the respective teacher to create exam
     [Authorize(Roles ="Teacher,Guest")]
     public class TeacherController : Controller
     {
+        //Injecting Dbcontext Class
         private readonly SchoolContext _schoolContext;
 
         //For files(Study Material)
@@ -30,6 +32,7 @@ namespace SchoolTestProject.Controllers
             _hostingEnvironment = hostingEnvironment;
         }
         
+        //Get Page For Creating Maths Assessment
         public IActionResult Index()
         {
            
@@ -37,6 +40,8 @@ namespace SchoolTestProject.Controllers
                     
             return View();
         }
+
+        //Creation Of Maths Exam
         [HttpPost]
         public IActionResult Index(QuestionOptionViewModel QuestionOption)
         {
@@ -83,11 +88,15 @@ namespace SchoolTestProject.Controllers
 
             return View();
         }
+        
+        //Get Page For Creating English Assessment
         [HttpGet]
         public IActionResult English()
         {
             return View();
         }
+
+        //Submission Of English Exam
         [HttpPost]
         public IActionResult English(QuestionOptionViewModel questionOptionViewModel)
         {
@@ -103,12 +112,16 @@ namespace SchoolTestProject.Controllers
             _schoolContext.SaveChanges();
             return View();
         }
+
+       //Get Page For Science Assessment Creation
         [HttpGet]
         public IActionResult Science()
         {
             return View();
 
         }
+
+        //Submitting The Questions And Answers 
         [HttpPost]
         public IActionResult Science(QuestionOptionViewModel questionOptionViewModel)
         {
@@ -125,11 +138,14 @@ namespace SchoolTestProject.Controllers
             return View();
         }
 
+        //Get Page For Social Assessment Creation
         [HttpGet]
         public IActionResult Social()
         {
             return View();
         }
+
+        //Submitting Social Assessment details
         [HttpPost]
         public IActionResult Social(QuestionOptionViewModel questionOptionViewModel)
         {
@@ -150,7 +166,7 @@ namespace SchoolTestProject.Controllers
 
 
 
-
+        //Get Study Material Upload Page 
         [HttpGet]
         public IActionResult File(string filename = "")
         {
@@ -177,7 +193,7 @@ namespace SchoolTestProject.Controllers
         }
 
 
-
+        //Posting The Study Material
         [HttpPost]
 
 
@@ -193,6 +209,7 @@ namespace SchoolTestProject.Controllers
             return File();
         }
 
+        //Giving Access To Student To Get The Study Material
 
         [Authorize(Roles = "Student")]
         public IActionResult PDFViewerNewTab(string fileName)
@@ -200,17 +217,24 @@ namespace SchoolTestProject.Controllers
             string path = _hostingEnvironment.WebRootPath + "\\files\\" + fileName;
             return File(System.IO.File.ReadAllBytes(path), "application/pdf");
         }
+
+        //Giving Access To Student To Get The Study Material
         [Authorize(Roles ="Student")]
         public IActionResult StudentMaterial(string filename)
         {
             return File();
         }
 
+        //Navigation Page For Teacher
         public IActionResult TeacherIndex()
         {
             return View();
 
         }
+
+
+        
+        
 
      
         }

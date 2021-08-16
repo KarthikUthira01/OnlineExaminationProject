@@ -10,6 +10,8 @@ namespace OnlineExaminationSchool.Models
     public class ResultFSUnitTest
     {
         [Key]
+        public int Id { get; set; }
+        [Column(TypeName = "nvarchar(250)")]
         public string Name { get; set; }
         [Column(TypeName = "int")]
         public int Marks { get; set; }
